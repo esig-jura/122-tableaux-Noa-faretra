@@ -36,4 +36,31 @@ const personnes = [
         age: 40,
         localite: 'San Francisco',
     }
+
 ];
+const formulaire = document.querySelector('form');
+const txtNom = document.querySelector('#nom');
+const txtPrenom = document.querySelector('#prenom');
+const txtAge = document.querySelector('#age');
+const txtLocalite = document.querySelector('#localite');
+const tableBody = document.querySelector('tbody');
+
+console.log(formulaire,txtNom,tableBody);
+
+
+//ecouter l'envoie du formulaire
+formulaire.addEventListener('submit', function envoyer(event) {
+    event.preventDefault();
+
+    let nouvelleLigne = `
+        <tr>
+            <td>${txtPrenom.value}</td>
+            <td>${txtNom.value}</td>
+            <td>${txtAge.value}</td>
+            <td>${txtLocalite.value}</td>
+        </tr>`;
+
+    tableBody.innerHTML += nouvelleLigne;
+
+    console.log(txtNom.value,tableBody);
+});
