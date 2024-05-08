@@ -63,4 +63,7 @@ formulaire.addEventListener('submit', function envoyer(event) {
     tableBody.innerHTML += nouvelleLigne;
 
     console.log(txtNom.value,tableBody);
+    //reset du formulaire
+    formulaire.reset();
+    txtPrenom.focus();
 });
