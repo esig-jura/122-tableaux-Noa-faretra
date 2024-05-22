@@ -59,7 +59,9 @@ function filtreTableau() {
     //cela permet de faire une recherche soit dans le nom ou dans le prénom
     return tabPersonnes.filter(function (obj){
         return obj.prenom.toLowerCase().includes(txtRechercher.value.toLowerCase())||
-            obj.nom.toLowerCase().includes(txtRechercher.value.toLowerCase());
+            obj.nom.toLowerCase().includes(txtRechercher.value.toLowerCase())||
+            obj.localite.toLowerCase().includes(txtRechercher.value.toLowerCase())||
+            obj.age.toString().includes(txtRechercher.value.toString());
     });
 }
 
