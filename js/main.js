@@ -5,7 +5,7 @@
 
 'use strict';
 
-const personnes = [
+const tabPersonnes = [
     {
         nom: 'Doe',
         prenom: 'John',
@@ -48,7 +48,23 @@ const tableBody = document.querySelector('tbody');
 console.log(formulaire,txtNom,tableBody);
 
 
-//ecouter l'envoie du formulaire
+// Fonction qui créer un tableau HTML à partir d'un tableau JS des personnes :
+
+function construireTableau()
+    {
+        // Parcours le tableau d'objets tabPersonnes
+        for(let personne of tabPersonnes){
+            tableBody.innerHTML += `<tr>
+            <td>${personne.prenom}</td>
+            <td>${personne.nom}</td>
+            <td>${personne.age}</td>
+            <td>${personne.localite}</td>
+        </tr>`;
+        }
+    }
+
+
+//écouter l'envoie du formulaire
 formulaire.addEventListener('submit', function envoyer(event) {
     event.preventDefault();
 
@@ -67,3 +83,6 @@ formulaire.addEventListener('submit', function envoyer(event) {
     formulaire.reset();
     txtPrenom.focus();
 });
+
+// execute quand la page a charger
+window.addEventListener('load', construireTableau);
