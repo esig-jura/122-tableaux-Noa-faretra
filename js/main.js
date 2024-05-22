@@ -38,6 +38,7 @@ const tabPersonnes = [
     }
 
 ];
+
 const formulaire = document.querySelector('form');
 const txtNom = document.querySelector('#nom');
 const txtPrenom = document.querySelector('#prenom');
@@ -45,13 +46,15 @@ const txtAge = document.querySelector('#age');
 const txtLocalite = document.querySelector('#localite');
 const tableBody = document.querySelector('tbody');
 
-console.log(formulaire,txtNom,tableBody);
+//console.log(formulaire,txtNom,tableBody);
 
 
 // Fonction qui créer un tableau HTML à partir d'un tableau JS des personnes :
 
 function construireTableau()
     {
+        //vide le tableau
+        tableBody.innerHTML='';
         // Parcours le tableau d'objets tabPersonnes
         for(let personne of tabPersonnes){
             tableBody.innerHTML += `<tr>
@@ -64,20 +67,20 @@ function construireTableau()
     }
 
 
+
 //écouter l'envoie du formulaire
 formulaire.addEventListener('submit', function envoyer(event) {
+    //stopper l'envoie du formulaire
     event.preventDefault();
+    // ajouter un objet à tabPersonne
+    tabPersonnes.push({
+       nom: txtNom.value,
+        prenom: txtPrenom.value,
+        age: txtAge.value,
+        localite: txtLocalite.value,
 
-    let nouvelleLigne = `
-        <tr>
-            <td>${txtPrenom.value}</td>
-            <td>${txtNom.value}</td>
-            <td>${txtAge.value}</td>
-            <td>${txtLocalite.value}</td>
-        </tr>`;
-
-    tableBody.innerHTML += nouvelleLigne;
-
+    });
+    construireTableau();
     console.log(txtNom.value,tableBody);
     //reset du formulaire
     formulaire.reset();
